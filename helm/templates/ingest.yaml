@@ -17,7 +17,7 @@ spec:
       containers:
       - image: 'ghcr.io/sharph/paelectionresults-backend:{{ .Values.backend.ingest.tag }}'
         name: ingest
-        cmd:
+        command:
           - python
           - downloader.py
         env:
