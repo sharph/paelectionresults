@@ -1,4 +1,6 @@
-const WS_URL = 'ws://localhost:8000/ws';
+import { env } from '$env/dynamic/public';
+
+const WS_URL = env.PUBLIC_WS_URL || 'ws://localhost:8000/ws';
 
 type MessageCallback = (msg: any) => any;
 
