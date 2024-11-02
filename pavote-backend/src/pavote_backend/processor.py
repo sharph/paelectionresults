@@ -2,6 +2,7 @@ import json
 import pprint
 import redis
 import random
+import os
 
 def normalize_name(name):
     return name[0] + name[1:].lower()
@@ -22,7 +23,7 @@ def process_election(data, test=False):
     return counties
 
 def publish_election(msg, topic):
-    client = redis.Redis('localhost', 6379)
+    client = redis.Redis(os.getenv('REDIS_HOST', 'localhost'), 6379)
     message = json.dumps({
         "topic": topic,
         "message": msg,

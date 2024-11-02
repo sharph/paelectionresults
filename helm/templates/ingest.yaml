@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ingest
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 0
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: ingest
+  template:
+    metadata:
+      labels:
+        app: ingest
+    spec:
+      containers:
+      - image: 'ghcr.io/sharph/paelectionresults-backend:{{ .Values.backend.ingest.tag }}'
+        name: ingest
+        env:
+        - name: REDIS_HOST
+          value: "paelectionresults-valkey-primary.paelectionresults.svc.cluster.local"
+        resources:
+          limits:
+            memory: 512Mi
+            cpu: 250m
