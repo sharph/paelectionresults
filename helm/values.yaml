@@ -6,6 +6,10 @@ backend:
   ingest:
     tag: latest
   pubsub:
+    domain: ''
     tag: latest
 frontend:
+  domain: ''
   tag: latest
+cert:
+  organization: ''
