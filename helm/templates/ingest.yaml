@@ -20,6 +20,9 @@ spec:
       containers:
       - image: 'ghcr.io/sharph/paelectionresults-backend:{{ .Values.backend.ingest.tag }}'
         name: ingest
+        cmd:
+          - python
+          - downloader.py
         env:
         - name: REDIS_HOST
           value: "paelectionresults-valkey-primary.paelectionresults.svc.cluster.local"
