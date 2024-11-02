@@ -3,7 +3,7 @@ kind: Certificate
 metadata:
   name: paelectionresults-cert
 spec:
-  commonName: "{{ .Values.fronend.domain }}"
+  commonName: "{{ .Values.frontend.domain }}"
   dnsNames:
   - "{{ .Values.frontend.domain }}"
   - "{{ .Values.backend.pubsub.domain }}"
