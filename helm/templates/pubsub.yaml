@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pubsub
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: pubsub
+  template:
+    metadata:
+      labels:
+        app: pubsub
+    spec:
+      containers:
+      - image: 'ghcr.io/sharph/paelectionresults-backend:{{ .Values.backend.pubsub.tag }}'
+        name: pubsub 
+        env:
+        - name: REDIS_URL
+          value: "redis://paelectionresults-valkey-primary.paelectionresults.svc.cluster.local:6379"
+      ports:
+        - containerPort: 8000
+          name: http
+          protocol: TCP
+      resources:
+        limits:
+          memory: 512Mi
+          cpu: 250m
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pubsub
+spec:
+  ports:
+  - port: 8000
+    protocol: TCP
+    targetPort: 8000
+  selector:
+    app: pubsub

@@ -2,3 +2,10 @@ valkey:
   auth:
     enabled: false
   architecture: standalone
+backend:
+  ingest:
+    tag: latest
+  pubsub:
+    tag: latest
+frontend:
+  tag: latest

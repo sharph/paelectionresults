@@ -1,6 +1,7 @@
 from typing import Union
 
 from fastapi import FastAPI, HTTPException, WebSocket, WebSocketDisconnect
+import os
 
 import aiopubsub
 import asyncio
@@ -57,7 +58,7 @@ async def handle_pubsub_message(msg):
 
 async def setup_redis_pool():
     global redis_pool
-    redis_pool = redis.ConnectionPool.from_url('redis://localhost')
+    redis_pool = redis.ConnectionPool.from_url(os.getenv("REDIS_URL", 'redis://localhost'))
 
 async def read_initial():
     client = redis.Redis(connection_pool=redis_pool)
