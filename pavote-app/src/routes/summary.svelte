@@ -43,6 +43,11 @@
 			🔴 WebSockets disconnected. Reconnecting!
 		{/if}
 	</p>
+	<p>
+		Data: <a href="https://www.electionreturns.pa.gov/" target="_blank">
+			https://www.electionreturns.pa.gov/
+		</a>
+	</p>
 </div>
 <div class="card p-8 m-8">
 	<div class="table-container">
