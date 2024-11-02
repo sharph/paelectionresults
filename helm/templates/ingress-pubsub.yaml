@@ -1,0 +1,32 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: pubsub
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - kind: Rule
+    match: Host(`{{ .Values.backend.pubsub.domain }}`)
+    services:
+    - name: pubsub
+      port: 8000
+  tls:
+    secretName: paelectionresults-cert
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: syndicator-redirect
+spec:
+  entryPoints:
+  - web
+  routes:
+  - kind: Rule
+    match: Host(`{{ .Values.backend.pubsub.domain }}`)
+    middlewares:
+    - name: https-redirect
+      namespace: traefik
+    services:
+    - kind: TraefikService
+      name: noop@internal
