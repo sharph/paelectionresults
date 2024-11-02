@@ -23,14 +23,14 @@ spec:
         env:
         - name: REDIS_URL
           value: "redis://paelectionresults-valkey-primary.paelectionresults.svc.cluster.local:6379"
-      ports:
-        - containerPort: 8000
-          name: http
-          protocol: TCP
-      resources:
-        limits:
-          memory: 512Mi
-          cpu: 250m
+        ports:
+          - containerPort: 8000
+            name: http
+            protocol: TCP
+        resources:
+          limits:
+            memory: 512Mi
+            cpu: 250m
 ---
 apiVersion: v1
 kind: Service
