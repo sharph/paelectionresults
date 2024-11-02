@@ -3,5 +3,5 @@ name: paelectionresults
 version: 0.1.0
 dependencies:
   - name: valkey
-    version: 1.0.3
-    repository: oci://projects.registry.vmware.com/bitnami/charts
+    version: 2.0.1
+    repository: https://charts.bitnami.com/bitnami
