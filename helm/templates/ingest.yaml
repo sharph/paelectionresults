@@ -23,6 +23,8 @@ spec:
         env:
         - name: REDIS_HOST
           value: "paelectionresults-valkey-primary.paelectionresults.svc.cluster.local"
+        - name: PYTHONUNBUFFERED
+          value: "1"
         resources:
           limits:
             memory: 512Mi

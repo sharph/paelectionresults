@@ -23,6 +23,8 @@ spec:
         env:
         - name: REDIS_URL
           value: "redis://paelectionresults-valkey-primary.paelectionresults.svc.cluster.local:6379"
+        - name: PYTHONUNBUFFERED
+          value: "1"
         ports:
           - containerPort: 8000
             name: http
