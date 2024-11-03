@@ -29,7 +29,7 @@ spec:
             memory: 512Mi
         env:
         - name: PUBLIC_WS_URL
-          value: 'wss://{{ .Values.backend.pubsub.domain }}'
+          value: 'wss://{{ .Values.backend.pubsub.domain }}/ws'
 ---
 apiVersion: v1
 kind: Service
