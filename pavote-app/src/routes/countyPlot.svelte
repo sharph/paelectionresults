@@ -129,7 +129,8 @@
 					title: 'Votes Democrat',
 					...(log ? logScale : linearScale)
 				},
-				title: `Votes for President in Pennsylvania Counties${mode !== 'live' ? ' (TEST DATA!)' : ''}`
+				title: `Votes for President in Pennsylvania Counties${mode !== 'live' ? ' (TEST DATA!)' : ''}`,
+				paper_bgcolor: 'rgba(243,244,246,255)'
 			}}
 			debounce={250}
 			fillParent={true}
