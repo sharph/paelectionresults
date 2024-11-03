@@ -47,4 +47,4 @@ jobs:
         run: |-
           curl -sSL -o argocd https://${{ secrets.ARGOCD_SERVER }}/download/argocd-linux-amd64
           chmod +x argocd
-          # ARGOCD_AUTH_TOKEN=${{ secrets.ARGOCD_AUTH_TOKEN }} ARGOCD_SERVER=${{ secrets.ARGOCD_SERVER }} ./argocd app set paelectionresults -p ingest.image.tag=sha-$GITHUB_SHA
+          ARGOCD_AUTH_TOKEN=${{ secrets.ARGOCD_AUTH_TOKEN }} ARGOCD_SERVER=${{ secrets.ARGOCD_SERVER }} ./argocd app set paelectionresults -p backend.ingest.tag=sha-$GITHUB_SHA
