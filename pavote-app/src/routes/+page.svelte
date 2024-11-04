@@ -3,6 +3,7 @@
 	import { connect, PubSub } from '$lib/livedata';
 	import { onMount } from 'svelte';
 	import Summary from './summary.svelte';
+	import CountyMap from './countyMap.svelte';
 
 	let log = false;
 	let connected = false;
@@ -55,5 +56,6 @@
 
 <div class="">
 	<Summary {mode} dataNow={data_2024} {electionMetadata} {connected} />
+	<CountyMap dataNow={data_2024} dataThen={data_2020} {electionMetadata} {mode} />
 	<CountyPlot dataNow={data_2024} dataThen={data_2020} {mode} />
 </div>

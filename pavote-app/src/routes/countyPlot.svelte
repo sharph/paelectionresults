@@ -56,7 +56,7 @@
 							y: [thenCounty.dem],
 							text: [`${name} 2020`],
 							mode: 'markers',
-							name: name,
+							name: `${name} (2020)`,
 							marker: {
 								size: 8
 							},
