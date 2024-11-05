@@ -15,8 +15,8 @@ ELECTION_URLS = {
     'https://phillyresws.azurewebsites.us/ResultsAjax.svc/GetMapData?type=FED&category=PREC&raceID=2&osn=2&county=04&party=0&LanguageID=1',
 }
 
-MODE = 'test'
-SYNTHETIC = True
+MODE = os.getenv('MODE', 'test')
+SYNTHETIC = os.getenv('SYNTHETIC', 'True').lower() == 'true'
 SLEEP_TIME = int(os.getenv('SLEEP_TIME', 60))
 
 

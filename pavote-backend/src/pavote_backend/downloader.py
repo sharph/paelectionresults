@@ -21,8 +21,8 @@ ELECTION_URLS = {
 #    'https://electionreturns.pa.gov/api/ElectionReturn/GetCountyBreak?officeId=7&districtId=1&methodName=GetCountyBreak&electionid=undefined&electiontype=undefined&isactive=undefined'
 }
 
-MODE = 'test'
-SYNTHETIC = True
+MODE = os.getenv('MODE', 'test')
+SYNTHETIC = os.getenv('SYNTHETIC', 'True').lower() == 'true'
 SLEEP_TIME = int(os.getenv('SLEEP_TIME', 60))
 
 

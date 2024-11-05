@@ -25,6 +25,12 @@ spec:
           value: "paelectionresults-valkey-primary.paelectionresults.svc.cluster.local"
         - name: PYTHONUNBUFFERED
           value: "1"
+        - name: MODE
+          value: "{{ .Values.backend.ingest.philly.mode }}'
+        - name: SYNTHETIC
+          value: "{{ .Values.backend.ingest.philly.synthetic }}'
+        - name: SLEEP_TIME
+          value: "{{ .Values.backend.ingest.philly.sleepTime }}'
         resources:
           limits:
             memory: 512Mi

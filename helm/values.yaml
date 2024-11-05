@@ -5,6 +5,13 @@ valkey:
 backend:
   ingest:
     tag: latest
+    mode: test
+    synthetic: true
+    sleepTime: "60"
+    philly:
+      mode: test
+      synthetic: true
+      sleepTime: "60"
   pubsub:
     domain: ''
     tag: latest
