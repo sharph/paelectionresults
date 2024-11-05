@@ -7,6 +7,7 @@ import aiopubsub
 import asyncio
 import json
 import redis.asyncio as redis
+import random
 from typing import Optional
 
 app = FastAPI()
@@ -20,6 +21,7 @@ current_states = {k: None for k in ALLOWED_TOPICS}
 def get_handler(topic, websocket: WebSocket, subscriber):
     async def handle_data(key, data):
         try:
+            await asyncio.sleep(random.random() * 8)
             await websocket.send_json({"topic": topic, "data": data})
         except RuntimeError:
             await subscriber.remove_all_listeners()
