@@ -41,7 +41,7 @@ def main():
         }
         for name, url in ELECTION_URLS.items():
             print(name)
-            out['elections'][name] = json.loads(requests.get(url).json()) if not SYNTHETIC else data_2020
+            out['elections'][name] = requests.get(url).json() if not SYNTHETIC else data_2020
             print('  ok')
 
         if last_data != out or SYNTHETIC:
