@@ -118,22 +118,24 @@
 		</label>
 	</div>
 	<div class="h-screen">
-		<Plot
-			{data}
-			layout={{
-				xaxis: {
-					title: 'Votes Republican',
-					...(log ? logScale : linearScale)
-				},
-				yaxis: {
-					title: 'Votes Democrat',
-					...(log ? logScale : linearScale)
-				},
-				title: `Votes for President in Pennsylvania Counties${mode !== 'live' ? ' (TEST DATA!)' : ''}`,
-				paper_bgcolor: 'rgba(243,244,246,255)'
-			}}
-			debounce={250}
-			fillParent={true}
-		/>
+		<div class="h-5/6">
+			<Plot
+				{data}
+				layout={{
+					xaxis: {
+						title: 'Votes Republican',
+						...(log ? logScale : linearScale)
+					},
+					yaxis: {
+						title: 'Votes Democrat',
+						...(log ? logScale : linearScale)
+					},
+					title: `Votes for President in Pennsylvania Counties${mode !== 'live' ? ' (TEST DATA!)' : ''}`,
+					paper_bgcolor: 'rgba(243,244,246,255)'
+				}}
+				debounce={250}
+				fillParent={true}
+			/>
+		</div>
 	</div>
 </div>
