@@ -30,7 +30,7 @@ def process_philly(data, test=False):
             divisions[division] = {
                 'dem': 0, 'rep': 0, 'lib': 0, 'grn': 0
             }
-        zero = random.random() > 0.5
+        zero = int(result['PrecinctNumber']) % 100 < 50
         divisions[division][result['PartyCode'].lower()] = int(result['calcCandidateVotes'] * (
             (random.random() + 0.5 if not zero else 0) if test else 1
         ))
