@@ -67,6 +67,10 @@
 	});
 </script>
 
+<svelte:head>
+	<title>PA Election Results 2024</title>
+</svelte:head>
+
 <div class="">
 	<Summary {mode} dataNow={data_2024} {electionMetadata} {connected} />
 	<CountyMap dataNow={data_2024} dataThen={data_2020} {electionMetadata} {mode} />

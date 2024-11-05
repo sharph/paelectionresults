@@ -73,7 +73,8 @@
 <div class="card p-8 m-8">
 	<h2 class="h2">
 		Pennsylvania County Map
-		{#if mode === 'test'}(TEST DATA!){/if}
+		{#if then}(2020)
+		{:else if mode === 'test'}(TEST DATA!){/if}
 	</h2>
 	<div class="space-y-2">
 		<label class="flex items-center space-x-2">
