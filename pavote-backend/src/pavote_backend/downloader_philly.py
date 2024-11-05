@@ -47,7 +47,7 @@ def main():
         if last_data != out or SYNTHETIC:
             last_data = out
             for name, data in out['elections'].items():
-                processed = process_philly(data)
+                processed = process_philly(data, SYNTHETIC)
                 publish_election({
                     'data': processed,
                     'mode': MODE,
