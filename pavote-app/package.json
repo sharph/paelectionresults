@@ -43,6 +43,7 @@
     "@floating-ui/dom": "1.6.12",
     "@types/d3-scale": "^4.0.8",
     "d3-scale": "^4.0.2",
+    "dayjs": "^1.11.13",
     "highlight.js": "11.10.0",
     "svelte-geo": "^0.3.0",
     "svelte-plotly.js": "^1.2.0",

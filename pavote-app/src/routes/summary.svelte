@@ -1,8 +1,12 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+
 	export let mode: string;
 	export let dataNow: any;
 	export let electionMetadata: any;
 	export let connected: boolean;
+	export let updated: any;
+	export let phillyUpdated: any;
 
 	let results: any = {};
 	let total = 0;
@@ -17,6 +21,31 @@
 		resultsArr.sort((a: any, b: any) => b.votes - a.votes);
 		console.log(resultsArr);
 	}
+
+	let updatedAgo: any = null;
+	let phillyUpdatedAgo: any = null;
+	let invalidator = false;
+
+	$: {
+		if (updated) {
+			updatedAgo = updated.fromNow();
+		}
+		if (phillyUpdated) {
+			phillyUpdatedAgo = phillyUpdated.fromNow();
+		}
+		invalidator;
+	}
+
+	let invalidatorInterval: any = null;
+
+	onMount(() => {
+		invalidatorInterval = setInterval(() => {
+			invalidator = !invalidator;
+		}, 1000);
+		return () => {
+			clearInterval(invalidatorInterval);
+		};
+	});
 
 	$: {
 		const parties: any = {};
@@ -42,6 +71,10 @@
 		{:else}
 			🔴 WebSockets disconnected. Reconnecting!
 		{/if}
+	</p>
+	<p>
+		{#if updatedAgo}PA updated {updatedAgo}, {updated.calendar()}{/if} /
+		{#if phillyUpdatedAgo}Philly updated {phillyUpdatedAgo}, {phillyUpdated.calendar()}{/if}
 	</p>
 </div>
 
