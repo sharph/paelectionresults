@@ -6,11 +6,11 @@ backend:
   ingest:
     tag: latest
     mode: test
-    synthetic: true
+    synthetic: "true"
     sleepTime: "60"
     philly:
       mode: test
-      synthetic: true
+      synthetic: "true"
       sleepTime: "60"
   pubsub:
     domain: ''
