@@ -22,6 +22,17 @@ def process_election(data, test=False):
             ) * ((random.random() + 0.5 if not zero else 0) if test else 1))
     return counties
 
+def process_philly(data, test=False):
+    divisions = {}
+    for result in data:
+        division = result['PrecinctName'][:5]
+        if division not in divisions:
+            divisions[division] = {
+                'dem': 0, 'rep': 0, 'lib': 0, 'grn': 0
+            }
+        divisions[division][result['PartyCode'].lower()] = result['calcCandidateVotes']
+    return divisions
+
 def publish_election(msg, topic):
     client = redis.Redis(os.getenv('REDIS_HOST', 'localhost'), 6379)
     message = json.dumps({

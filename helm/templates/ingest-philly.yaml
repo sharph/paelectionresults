@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ingest-philly
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: ingest-philly
+  template:
+    metadata:
+      labels:
+        app: ingest-philly
+    spec:
+      containers:
+      - image: 'ghcr.io/sharph/paelectionresults-backend:{{ .Values.backend.ingest.tag }}'
+        name: ingest
+        command:
+          - python
+          - downloader_philly.py
+        env:
+        - name: REDIS_HOST
+          value: "paelectionresults-valkey-primary.paelectionresults.svc.cluster.local"
+        - name: PYTHONUNBUFFERED
+          value: "1"
+        resources:
+          limits:
+            memory: 512Mi
+            cpu: 250m
