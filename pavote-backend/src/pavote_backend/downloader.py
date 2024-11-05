@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 
+import pytz
 import requests
 import json
 import time
 import os
 import shutil
+import datetime
 
 from processor import process_election, publish_election
 
@@ -37,7 +39,7 @@ def main():
     last_time = None
     last_data = None
     while True:
-        ts = requests.get(TS_URL).json()
+        ts = datetime.datetime.now(pytz.timezone('US/Eastern')).isoformat()
         print('ts:', ts)
         if last_time != ts:
             last_time = ts
