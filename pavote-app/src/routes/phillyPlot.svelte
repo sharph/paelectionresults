@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Plot from 'svelte-plotly.js';
+	import { browser } from '$app/environment';
 
 	export let dataNow: any;
 	export let dataThen: any;
@@ -132,7 +133,8 @@
 						...(log ? logScale : linearScale)
 					},
 					title: `Votes for President in Philadelphia Ward-Divisions${mode !== 'live' ? ' (TEST DATA!)' : ''}`,
-					paper_bgcolor: 'rgba(243,244,246,255)'
+					paper_bgcolor: 'rgba(243,244,246,255)',
+					showlegend: browser ? window.screen.width > 600 : false
 				}}
 				debounce={250}
 				fillParent={true}

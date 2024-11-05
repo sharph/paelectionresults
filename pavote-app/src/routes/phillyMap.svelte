@@ -136,4 +136,10 @@
 		max-width: 40em;
 		height: 40em;
 	}
+	@media only screen and (max-width: 600px) {
+		.map {
+			width: 20em;
+			height: 20em;
+		}
+	}
 </style>
