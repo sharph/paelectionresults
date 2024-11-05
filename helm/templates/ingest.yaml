@@ -26,11 +26,11 @@ spec:
         - name: PYTHONUNBUFFERED
           value: "1"
         - name: MODE
-          value: "{{ .Values.backend.ingest.mode }}'
+          value: "{{ .Values.backend.ingest.mode }}"
         - name: SYNTHETIC
-          value: "{{ .Values.backend.ingest.synthetic }}'
+          value: "{{ .Values.backend.ingest.synthetic }}"
         - name: SLEEP_TIME
-          value: "{{ .Values.backend.ingest.sleepTime }}'
+          value: "{{ .Values.backend.ingest.sleepTime }}"
         resources:
           limits:
             memory: 512Mi
