@@ -33,7 +33,7 @@
 
 <div class="p-8 m-8">
 	<h1 class="h1">PA 2024 Presidential Election Results</h1>
-	{#if mode !== 'live'}
+	{#if mode === 'test'}
 		<h2 class="h2">TEST DATA! TEST DATA!</h2>
 	{/if}
 	<p>
@@ -45,8 +45,9 @@
 	</p>
 	<p>
 		Data: <a href="https://www.electionreturns.pa.gov/" target="_blank">
-			https://www.electionreturns.pa.gov/
-		</a>
+			https://www.electionreturns.pa.gov/</a
+		>,
+		<a href="https://vote.phila.gov/results/" target="_blank">https://vote.phila.gov/results/</a>
 	</p>
 </div>
 <div class="card p-8 m-8">
