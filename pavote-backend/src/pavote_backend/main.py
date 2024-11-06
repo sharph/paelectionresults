@@ -45,7 +45,7 @@ async def websocket_endpoint(websocket: WebSocket):
             if current_states[msg['subscribe']] is not None:
                 await websocket.send_json({"topic": msg["subscribe"], "data": current_states[msg['subscribe']]})
             sub.add_async_listener(key, get_handler(msg['subscribe'], websocket, sub))
-        else:
+        elif 'subscribe' in msg:
             await websocket.send_json({"not_subscribed": msg['subscribe']})
 
 
