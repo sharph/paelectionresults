@@ -14,7 +14,7 @@ app = FastAPI()
 hub = aiopubsub.Hub()
 redis_pool: Optional[redis.ConnectionPool] = None
 
-ALLOWED_TOPICS = ["2020_pa_presidential", "2024_pa_presidential", "2020_philly_presidential", "2024_philly_presidential"]
+ALLOWED_TOPICS = ["2020_pa_presidential", "2024_pa_presidential", "2020_philly_presidential", "2024_philly_presidential", "2024_philly_presidential_reported"]
 
 current_states = {k: None for k in ALLOWED_TOPICS}
 

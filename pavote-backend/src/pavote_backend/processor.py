@@ -22,9 +22,11 @@ def process_election(data, test=False):
             ) * ((random.random() + 0.5 if not zero else 0) if test else 1))
     return counties
 
-def process_philly(data, test=False):
+def process_philly(data, test=False, filter_not_reported=False):
     divisions = {}
     for result in data:
+        if filter_not_reported and not result['IsReported']:
+            continue
         division = result['PrecinctName'][:5]
         if division not in divisions:
             divisions[division] = {

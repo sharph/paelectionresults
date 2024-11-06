@@ -53,6 +53,12 @@ def main():
                     'mode': MODE,
                     'time': ts
                 }, name)
+                processed = process_philly(data, SYNTHETIC, True)
+                publish_election({
+                    'data': processed,
+                    'mode': MODE,
+                    'time': ts
+                }, name + '_reported')
         else:
             print('data is the same')
             time.sleep(SLEEP_TIME)
