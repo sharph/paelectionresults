@@ -10,6 +10,7 @@ export class PubSub {
 	onConnectionStatusChange: ((connected: boolean) => void) | null;
 	handlers: Map<string, MessageCallback[]>;
 	reconnect: boolean;
+	interval: any;
 
 	subscribe(topic: string, messageCallback: MessageCallback) {
 		const callbacks = this.handlers.get(topic);
@@ -38,12 +39,21 @@ export class PubSub {
 			for (const topic of this.handlers.keys()) {
 				ws.send(JSON.stringify({ "subscribe": topic }));
 			}
+			this.interval = setInterval(() => {
+				if (ws.readyState == WebSocket.OPEN) {
+					ws.send(JSON.stringify({ "ping": true }));
+				}
+			}, 5000);
 		};
 		ws.onclose = async () => {
 			if (this.onConnectionStatusChange) {
 				this.onConnectionStatusChange(false);
 			}
 			await new Promise((res) => setTimeout(res, 5000));
+			if (this.interval) {
+				clearInterval(this.interval);
+				this.interval = null;
+			}
 			this.connect()
 		};
 		ws.onmessage = (ev) => {
