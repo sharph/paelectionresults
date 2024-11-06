@@ -15,8 +15,11 @@ backend:
   pubsub:
     domain: ''
     tag: latest
+    replicas: 1
 frontend:
   domain: ''
   tag: latest
+  maxReplicas: 10
+  targetUtilization: 75
 cert:
   organization: ''

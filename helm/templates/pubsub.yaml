@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: pubsub
 spec:
-  replicas: 1
+  replicas: {{ .Values.backend.pubsub.replicas }}
   strategy:
     type: RollingUpdate
     rollingUpdate:
